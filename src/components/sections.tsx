@@ -185,8 +185,9 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl px-5 py-20">
         <SectionHeading index="04" title="Testimonials" />
         <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="panel flex h-full flex-col justify-between p-7">
+          {testimonials.map((t, i) => (
+            <figure key={`${t.name}-${i}`} className="panel flex h-full flex-col justify-between p-7">
+
               <blockquote className="text-sm leading-relaxed text-foreground">
                 <span className="mr-1 font-mono text-primary">“</span>
                 {t.quote}
