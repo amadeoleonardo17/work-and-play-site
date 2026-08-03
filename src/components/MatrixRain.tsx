@@ -36,13 +36,13 @@ export function MatrixRain({ opacity = 0.28 }: { opacity?: number }) {
       ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const char = glyphs[Math.floor(Math.random() * glyphs.length)];
+        const char = glyphs[Math.floor(Math.random() * glyphs.length)] ?? "0";
         const x = i * fontSize;
-        const y = drops[i] * fontSize;
+        const y = (drops[i] ?? 0) * fontSize;
         ctx.fillStyle = Math.random() > 0.975 ? "rgba(190, 255, 210, 0.95)" : "rgba(64, 224, 120, 0.7)";
         ctx.fillText(char, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+        drops[i] = (drops[i] ?? 0) + 1;
       }
     };
     raf = requestAnimationFrame(draw);
