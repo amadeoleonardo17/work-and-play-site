@@ -1,93 +1,93 @@
 export const profile = {
-  name: "Alex Mercado",
-  initials: "AM",
-  role: "Full-Stack Developer",
-  headline: ["I Build Systems", "Inside The Machine"],
+  name: "Amadeo Leonardo",
+  initials: "AL",
+  role: "Technical VA & AI Automation Specialist",
+  headline: ["I Automate Systems", "Inside The Machine"],
   intro:
-    "I design and ship resilient web platforms — clean architecture, fast interfaces, and code that holds up under load.",
-  email: "hello@alexmercado.dev",
-  phone: "+63 912 345 6789",
-  location: "Manila, Philippines",
-  availability: "Open for new contracts",
+    "Technical support professional with 11+ years of enterprise troubleshooting experience, now building AI-powered no-code automations with Zapier, n8n, and GoHighLevel CRM.",
+  email: "amadeo.leonardo.17@gmail.com",
+  phone: "09153504935",
+  location: "Marikina City, Philippines",
+  availability: "Open for technical VA & automation work",
   stats: [
-    { value: "6+", label: "Years in production" },
-    { value: "40+", label: "Systems shipped" },
-    { value: "22", label: "Clients served" },
+    { value: "11+", label: "Years in support" },
+    { value: "CCNA", label: "Certified network assoc." },
+    { value: "3", label: "Automation stacks" },
   ],
-  stack: ["TypeScript", "React", "Node", "Postgres", "Go", "AWS"],
+  stack: ["Zapier", "n8n", "GoHighLevel", "ChatGPT", "Claude AI", "Microsoft Copilot"],
 };
 
 export const services = [
   {
     code: "01",
-    title: "Web Application Engineering",
-    body: "End-to-end product builds: architecture, data modeling, interface, deployment pipeline.",
-    tags: ["React", "TanStack", "Tailwind"],
+    title: "No-Code Workflow Automation",
+    body: "Design and build automations that remove repetitive manual work across your business tools.",
+    tags: ["Zapier", "n8n", "Webhooks"],
   },
   {
     code: "02",
-    title: "API & Backend Systems",
-    body: "Typed APIs, event pipelines, and database design built to survive real traffic.",
-    tags: ["Node", "Postgres", "Redis"],
+    title: "CRM Automation & Setup",
+    body: "GoHighLevel workflows for contact tagging, pipeline updates, and follow-up sequences that nurture leads.",
+    tags: ["GoHighLevel", "CRM Design"],
   },
   {
     code: "03",
-    title: "Performance Forensics",
-    body: "Profiling, query tuning, and render-path surgery for applications that got slow.",
-    tags: ["Profiling", "Core Web Vitals"],
+    title: "AI Workflow & Prompt Engineering",
+    body: "Apply ChatGPT, Claude, and Copilot to qualify leads, draft content, and speed up daily operations.",
+    tags: ["ChatGPT", "Claude", "Copilot"],
   },
   {
     code: "04",
-    title: "Cloud & Automation",
-    body: "Infrastructure as code, CI/CD, observability, and cost-aware scaling strategy.",
-    tags: ["AWS", "Terraform", "CI/CD"],
+    title: "Technical Support & Troubleshooting",
+    body: "Enterprise-level remote support: incident management, root cause analysis, and clear documentation.",
+    tags: ["Networking", "CCNA", "Documentation"],
   },
 ];
 
 export const experience = [
   {
-    period: "2023 — Present",
-    role: "Lead Software Engineer",
-    org: "Sentinel Labs",
-    body: "Leads a four-engineer team building a real-time monitoring platform serving 90k daily sessions.",
+    period: "2015 — 2026",
+    role: "Technical Helpdesk / Technical Support Engineer",
+    org: "Orchid Cybertech / Tech Mahindra",
+    body: "Supported enterprise and business customers: diagnosed network and connectivity issues, investigated incidents, documented resolutions, and worked escalations within SLA.",
   },
   {
-    period: "2021 — 2023",
-    role: "Senior Full-Stack Developer",
-    org: "Northgate Digital",
-    body: "Rebuilt the client dashboard suite, cutting median load time from 4.1s to 900ms.",
+    period: "2009 — 2015",
+    role: "Technical Support / Customer Service Representative",
+    org: "Teleperformance Philippines",
+    body: "Troubleshot internet, networking, and software issues at high volume while documenting every interaction in CRM and ticketing systems.",
   },
   {
-    period: "2019 — 2021",
-    role: "Software Developer",
-    org: "Bitforge Studio",
-    body: "Delivered commerce and booking platforms for retail and hospitality clients.",
+    period: "2026",
+    role: "AI Automation & No-Code Workflow Development",
+    org: "Tara AI — Training",
+    body: "Zapier automation, n8n workflow development, GoHighLevel CRM, AI workflow design, and business process optimization.",
   },
   {
-    period: "2015 — 2019",
+    period: "2009",
     role: "BS Computer Science",
-    org: "University of the Philippines",
-    body: "Focus on distributed systems, compilers, and applied algorithms.",
+    org: "AMA Computer College",
+    body: "Cisco Certified Network Associate (CCNA). Foundation in networking, systems, and applied computing.",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Alex rewrote the core of our platform without a single day of downtime. Precise, calm, and relentlessly thorough.",
-    name: "Marisa Cruz",
-    title: "CTO, Sentinel Labs",
+      "Placeholder testimonial — send me real client quotes and I'll swap these in. Amadeo mapped our lead flow and automated it end to end within days.",
+    name: "Client Name",
+    title: "Role, Company",
   },
   {
     quote:
-      "He found the bottleneck our team chased for months, then shipped the fix in a week. Our checkout is twice as fast.",
-    name: "Daniel Okafor",
-    title: "Head of Product, Northgate",
+      "Placeholder testimonial — clear documentation, calm troubleshooting, and follow-through on every escalation.",
+    name: "Client Name",
+    title: "Role, Company",
   },
   {
     quote:
-      "Rare mix of deep engineering and design sense. Everything he hands over is documented and ready to extend.",
-    name: "Sofia Lin",
-    title: "Founder, Loop Retail",
+      "Placeholder testimonial — our CRM finally runs itself. Tagging, pipelines, and follow-ups are all automated.",
+    name: "Client Name",
+    title: "Role, Company",
   },
 ];
