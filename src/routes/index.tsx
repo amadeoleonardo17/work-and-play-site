@@ -3,9 +3,10 @@ import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Hero, Services, Experience, Works, Testimonials, Contact } from "@/components/sections";
 import { profile } from "@/data/portfolio";
 
-const title = `${profile.name} — ${profile.role} Portfolio`;
+const title = `${profile.name} — AI Automation & Technical VA`;
 const description =
-  "Full-stack developer portfolio: services, work experience, selected projects, client testimonials, and contact details.";
+  "Amadeo Leonardo: technical virtual assistant and AI automation specialist. Zapier, n8n, and GoHighLevel workflows, plus 11+ years of enterprise technical support.";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
