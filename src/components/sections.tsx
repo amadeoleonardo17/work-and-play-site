@@ -128,23 +128,24 @@ export function Experience() {
 const works = [
   {
     image: work1,
-    title: "Sentinel Monitor",
-    stack: "React · Go · TimescaleDB",
-    body: "Real-time infrastructure monitoring with sub-second streaming charts across 90k daily sessions.",
+    title: "AI Lead Qualification Workflow",
+    stack: "Zapier · ChatGPT · Google Sheets",
+    body: "Captures new leads from online forms, uses AI to categorize and qualify them, updates Google Sheets records, and triggers email alerts by lead quality.",
   },
   {
     image: work2,
-    title: "Loop Commerce",
-    stack: "TanStack · Node · Stripe",
-    body: "Headless storefront and checkout rebuild that halved time-to-purchase for a retail chain.",
+    title: "CRM Automation Workflow",
+    stack: "GoHighLevel CRM",
+    body: "Automated contact tagging and pipeline updates with follow-up sequences for lead nurturing, cutting repetitive manual CRM work.",
   },
   {
     image: work3,
-    title: "Cipher API Console",
-    stack: "TypeScript · Postgres · AWS",
-    body: "Developer console with live request logs, key rotation, and generated typed SDKs.",
+    title: "Business Workflow Automation",
+    stack: "n8n · Multi-app integrations",
+    body: "Connected multiple applications with triggers, conditional logic, and notifications to organize business data into structured no-code workflows.",
   },
 ];
+
 
 export function Works() {
   return (
@@ -184,8 +185,9 @@ export function Testimonials() {
       <div className="mx-auto max-w-6xl px-5 py-20">
         <SectionHeading index="04" title="Testimonials" />
         <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="panel flex h-full flex-col justify-between p-7">
+          {testimonials.map((t, i) => (
+            <figure key={`${t.name}-${i}`} className="panel flex h-full flex-col justify-between p-7">
+
               <blockquote className="text-sm leading-relaxed text-foreground">
                 <span className="mr-1 font-mono text-primary">“</span>
                 {t.quote}

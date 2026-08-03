@@ -31,7 +31,7 @@ export function MatrixRain({ opacity = 0.28 }: { opacity?: number }) {
       if (t - last < 55) return;
       last = t;
 
-      ctx.fillStyle = "rgba(3, 10, 6, 0.16)";
+      ctx.fillStyle = "rgba(4, 8, 18, 0.16)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
 
@@ -39,7 +39,8 @@ export function MatrixRain({ opacity = 0.28 }: { opacity?: number }) {
         const char = glyphs[Math.floor(Math.random() * glyphs.length)] ?? "0";
         const x = i * fontSize;
         const y = (drops[i] ?? 0) * fontSize;
-        ctx.fillStyle = Math.random() > 0.975 ? "rgba(190, 255, 210, 0.95)" : "rgba(64, 224, 120, 0.7)";
+        ctx.fillStyle = Math.random() > 0.975 ? "rgba(200, 230, 255, 0.95)" : "rgba(70, 150, 255, 0.72)";
+
         ctx.fillText(char, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i] = (drops[i] ?? 0) + 1;
