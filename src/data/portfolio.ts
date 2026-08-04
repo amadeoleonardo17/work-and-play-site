@@ -9,6 +9,7 @@ export const profile = {
   phone: "09153504935",
   location: "Marikina City, Philippines",
   availability: "Open for technical VA & automation work",
+  calendlyUrl: "https://calendly.com/amadeo-leonardo-17/30min",
   stats: [
     { value: "11+", label: "Years in support" },
     { value: "CCNA", label: "Certified network assoc." },
@@ -46,6 +47,12 @@ export const services = [
 
 export const experience = [
   {
+    period: "2026",
+    role: "AI Automation & No-Code Workflow Development",
+    org: "Tara AI — Training",
+    body: "Zapier automation, n8n workflow development, GoHighLevel CRM, AI workflow design, and business process optimization.",
+  },
+  {
     period: "2015 — 2026",
     role: "Technical Helpdesk / Technical Support Engineer",
     org: "Orchid Cybertech / Tech Mahindra",
@@ -58,36 +65,9 @@ export const experience = [
     body: "Troubleshot internet, networking, and software issues at high volume while documenting every interaction in CRM and ticketing systems.",
   },
   {
-    period: "2026",
-    role: "AI Automation & No-Code Workflow Development",
-    org: "Tara AI — Training",
-    body: "Zapier automation, n8n workflow development, GoHighLevel CRM, AI workflow design, and business process optimization.",
-  },
-  {
     period: "2009",
     role: "BS Computer Science",
     org: "AMA Computer College",
     body: "Cisco Certified Network Associate (CCNA). Foundation in networking, systems, and applied computing.",
-  },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "Placeholder testimonial — send me real client quotes and I'll swap these in. Amadeo mapped our lead flow and automated it end to end within days.",
-    name: "Client Name",
-    title: "Role, Company",
-  },
-  {
-    quote:
-      "Placeholder testimonial — clear documentation, calm troubleshooting, and follow-through on every escalation.",
-    name: "Client Name",
-    title: "Role, Company",
-  },
-  {
-    quote:
-      "Placeholder testimonial — our CRM finally runs itself. Tagging, pipelines, and follow-ups are all automated.",
-    name: "Client Name",
-    title: "Role, Company",
   },
 ];
