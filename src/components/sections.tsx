@@ -1,9 +1,16 @@
 import { MatrixRain } from "@/components/MatrixRain";
+import { Reveal } from "@/components/effects";
 import profileAsset from "@/assets/profile.png.asset.json";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import { profile, services, experience, testimonials } from "@/data/portfolio";
+import workAiContent from "@/assets/work-ai-content.png.asset.json";
+import workAsanaCrm from "@/assets/work-asana-crm.png.asset.json";
+import workLeads from "@/assets/work-leads-enrichment.png.asset.json";
+import achCcnaCert from "@/assets/ach-ccna-cert.jpg.asset.json";
+import achCcnaScore from "@/assets/ach-ccna-score.jpg.asset.json";
+import achTp5 from "@/assets/ach-teleperformance-5yrs.jpg.asset.json";
+import achTm10 from "@/assets/ach-techm-10yrs.jpg.asset.json";
+import achOvation from "@/assets/ach-standing-ovation.png.asset.json";
+import achBravo from "@/assets/ach-bravo.png.asset.json";
+import { profile, services, experience } from "@/data/portfolio";
 
 function SectionHeading({ index, title }: { index: string; title: string }) {
   return (
@@ -30,12 +37,18 @@ export function Hero() {
             {profile.intro}
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#works"
-              className="inline-flex items-center gap-2 bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
+              className="press-fx inline-flex items-center gap-2 bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
             >
               View the record
+            </a>
+            <a
+              href="#discovery-call"
+              className="press-fx inline-flex items-center gap-2 border border-primary/70 px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              Book a discovery call
             </a>
           </div>
 
@@ -45,7 +58,7 @@ export function Hero() {
               {profile.stack.map((s) => (
                 <li
                   key={s}
-                  className="border border-border bg-surface/70 px-3 py-1 font-mono text-[0.7rem] text-muted-foreground"
+                  className="border border-border bg-surface/70 px-3 py-1 font-mono text-[0.7rem] text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   {s}
                 </li>
@@ -61,10 +74,8 @@ export function Hero() {
               alt={`Portrait of ${profile.name}`}
               width={1242}
               height={1242}
-              className="w-full object-cover saturate-0 contrast-125 brightness-90"
+              className="w-full object-cover"
             />
-            <div className="pointer-events-none absolute inset-0 bg-primary/25 mix-blend-color" />
-            <div className="pointer-events-none absolute inset-0 scanlines opacity-50" />
           </div>
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
@@ -87,17 +98,19 @@ export function Services() {
     <section id="services" className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading index="01" title="Services" />
       <div className="grid gap-px bg-border sm:grid-cols-2">
-        {services.map((s) => (
-          <article key={s.code} className="group bg-card p-7 transition-colors hover:bg-surface">
-            <span className="font-mono text-xs text-primary">{s.code}</span>
-            <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-primary">
-              {s.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-            <p className="mt-5 font-mono text-[0.7rem] tracking-[0.1em] text-accent-foreground">
-              {s.tags.join(" · ")}
-            </p>
-          </article>
+        {services.map((s, i) => (
+          <Reveal key={s.code} delay={i * 80}>
+            <article className="group h-full bg-card p-7 transition-all hover:bg-surface hover:shadow-[var(--shadow-glow)]">
+              <span className="font-mono text-xs text-primary">{s.code}</span>
+              <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-primary">
+                {s.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+              <p className="mt-5 font-mono text-[0.7rem] tracking-[0.1em] text-accent-foreground">
+                {s.tags.join(" · ")}
+              </p>
+            </article>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -110,13 +123,15 @@ export function Experience() {
       <div className="mx-auto max-w-6xl px-5 py-20">
         <SectionHeading index="02" title="Work Experience" />
         <ol className="relative border-l border-border pl-6">
-          {experience.map((e) => (
+          {experience.map((e, i) => (
             <li key={e.period} className="relative pb-10 last:pb-0">
               <span className="absolute -left-[1.72rem] top-1.5 h-2 w-2 bg-primary shadow-[var(--shadow-glow)]" />
-              <p className="font-mono text-[0.7rem] tracking-[0.16em] text-primary">{e.period}</p>
-              <h3 className="mt-2 text-lg font-semibold text-foreground">{e.role}</h3>
-              <p className="font-mono text-xs text-muted-foreground">{e.org}</p>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{e.body}</p>
+              <Reveal delay={i * 70}>
+                <p className="font-mono text-[0.7rem] tracking-[0.16em] text-primary">{e.period}</p>
+                <h3 className="mt-2 text-lg font-semibold text-foreground">{e.role}</h3>
+                <p className="font-mono text-xs text-muted-foreground">{e.org}</p>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{e.body}</p>
+              </Reveal>
             </li>
           ))}
         </ol>
@@ -127,78 +142,116 @@ export function Experience() {
 
 const works = [
   {
-    image: work1,
-    title: "AI Lead Qualification Workflow",
-    stack: "Zapier · ChatGPT · Google Sheets",
-    body: "Captures new leads from online forms, uses AI to categorize and qualify them, updates Google Sheets records, and triggers email alerts by lead quality.",
+    image: workLeads.url,
+    title: "Automated Leads Enrichment",
+    stack: "Zapier · Apollo · Google Sheets · Slack · Gmail",
+    body: "Captures form leads, enriches company data via Apollo webhooks, splits high and low priority paths, logs to Sheets, notifies Sales on Slack, and drafts AI outreach emails.",
   },
   {
-    image: work2,
-    title: "CRM Automation Workflow",
-    stack: "GoHighLevel CRM",
-    body: "Automated contact tagging and pipeline updates with follow-up sequences for lead nurturing, cutting repetitive manual CRM work.",
+    image: workAsanaCrm.url,
+    title: "Asana CRM Lead Engagement Workflow",
+    stack: "Zapier · Asana · Gmail · Google Drive",
+    body: "Five-stage pipeline automation (Ready to Start, No Response, Quoted, Approved, Paid & Closed) with lead folders, delayed follow-ups, and stage-specific email sequences.",
   },
   {
-    image: work3,
-    title: "Business Workflow Automation",
-    stack: "n8n · Multi-app integrations",
-    body: "Connected multiple applications with triggers, conditional logic, and notifications to organize business data into structured no-code workflows.",
+    image: workAiContent.url,
+    title: "AI Content Repurposing",
+    stack: "Zapier · AI by Zapier · Google Drive · Looping",
+    body: "Watches a Drive folder, transcribes new files with AI, generates a blog post, then loops and splits into paths to repurpose content across channels.",
   },
 ];
-
 
 export function Works() {
   return (
     <section id="works" className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading index="03" title="Previous Works" />
       <div className="grid gap-6 md:grid-cols-3">
-        {works.map((w) => (
-          <article key={w.title} className="panel group overflow-hidden">
-            <div className="relative overflow-hidden border-b border-border">
-              <img
-                src={w.image}
-                alt={`${w.title} interface`}
-                loading="lazy"
-                width={1024}
-                height={640}
-                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="pointer-events-none absolute inset-0 scanlines opacity-30" />
-            </div>
-            <div className="p-6">
-              <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
-                {w.title}
-              </h3>
-              <p className="mt-1 font-mono text-[0.68rem] tracking-[0.1em] text-primary">{w.stack}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
-            </div>
-          </article>
+        {works.map((w, i) => (
+          <Reveal key={w.title} delay={i * 90}>
+            <article className="panel group h-full overflow-hidden">
+              <div className="relative overflow-hidden border-b border-border bg-surface">
+                <img
+                  src={w.image}
+                  alt={`${w.title} automation workflow`}
+                  loading="lazy"
+                  className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
+                  {w.title}
+                </h3>
+                <p className="mt-1 font-mono text-[0.68rem] tracking-[0.1em] text-primary">{w.stack}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+              </div>
+            </article>
+          </Reveal>
         ))}
       </div>
     </section>
   );
 }
 
-export function Testimonials() {
-  return (
-    <section id="testimonials" className="border-y border-border bg-surface/40">
-      <div className="mx-auto max-w-6xl px-5 py-20">
-        <SectionHeading index="04" title="Testimonials" />
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <figure key={`${t.name}-${i}`} className="panel flex h-full flex-col justify-between p-7">
+const achievements = [
+  {
+    image: achCcnaCert.url,
+    title: "Cisco Certified Network Associate (Routing & Switching)",
+    meta: "Cisco · Certified April 21, 2015 · ID CSCO12673879",
+  },
+  {
+    image: achCcnaScore.url,
+    title: "CCNA Exam — Passed with a score of 931/1000",
+    meta: "Cisco · Exam 200-120 · Passing score 825",
+  },
+  {
+    image: achTm10.url,
+    title: "10th Service Anniversary Recognition",
+    meta: "Tech Mahindra · Signed by MD & CEO Mohit Joshi",
+  },
+  {
+    image: achOvation.url,
+    title: "Standing Ovation Award",
+    meta: "Tech Mahindra · For excellence that deserves applause",
+  },
+  {
+    image: achBravo.url,
+    title: "Bravo Award",
+    meta: "Tech Mahindra · For consistently raising the bar",
+  },
+  {
+    image: achTp5.url,
+    title: "Certificate of Recognition — 5 Years of Dedicated Service",
+    meta: "Teleperformance Philippines",
+  },
+];
 
-              <blockquote className="text-sm leading-relaxed text-foreground">
-                <span className="mr-1 font-mono text-primary">“</span>
-                {t.quote}
-              </blockquote>
-              <figcaption className="mt-6 border-t border-border pt-4">
-                <p className="font-mono text-xs tracking-[0.14em] text-primary">{t.name}</p>
-                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                  {t.title}
-                </p>
-              </figcaption>
-            </figure>
+export function Achievements() {
+  return (
+    <section id="achievements" className="border-y border-border bg-surface/40">
+      <div className="mx-auto max-w-6xl px-5 py-20">
+        <SectionHeading index="04" title="Achievements" />
+        <div className="grid gap-6 md:grid-cols-3">
+          {achievements.map((a, i) => (
+            <Reveal key={a.title} delay={i * 80}>
+              <figure className="panel group h-full overflow-hidden">
+                <div className="overflow-hidden border-b border-border bg-background">
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    loading="lazy"
+                    className="h-48 w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="p-6">
+                  <h3 className="text-sm font-semibold leading-snug text-foreground group-hover:text-primary">
+                    {a.title}
+                  </h3>
+                  <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                    {a.meta}
+                  </p>
+                </figcaption>
+              </figure>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -206,12 +259,59 @@ export function Testimonials() {
   );
 }
 
+export function DiscoveryCall() {
+  return (
+    <section id="discovery-call" className="mx-auto max-w-6xl px-5 py-20">
+      <SectionHeading index="05" title="Book a Discovery Call" />
+      <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr]">
+        <Reveal>
+          <div className="space-y-4">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Pick a 30-minute slot and we'll map the manual work in your business, then scope the
+              automations that remove it. No pitch — just a working session.
+            </p>
+            <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+              <li>
+                <span className="text-primary">&gt;</span> Review your current tools & workflows
+              </li>
+              <li>
+                <span className="text-primary">&gt;</span> Identify quick automation wins
+              </li>
+              <li>
+                <span className="text-primary">&gt;</span> Get a clear next-step plan
+              </li>
+            </ul>
+            <a
+              href={profile.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press-fx inline-flex bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-shadow hover:shadow-[var(--shadow-glow)]"
+            >
+              Open scheduler
+            </a>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <div className="panel overflow-hidden">
+            <iframe
+              src={`${profile.calendlyUrl}?hide_gdpr_banner=1&background_color=ffffff`}
+              title="Schedule a discovery call with Amadeo Leonardo"
+              loading="lazy"
+              className="h-[680px] w-full border-0"
+            />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 export function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden">
+    <section id="contact" className="relative overflow-hidden border-t border-border">
       <MatrixRain opacity={0.14} />
       <div className="relative mx-auto max-w-6xl px-5 py-20">
-        <SectionHeading index="05" title="Contact" />
+        <SectionHeading index="06" title="Contact" />
         <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-6">
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
@@ -237,13 +337,20 @@ export function Contact() {
             className="panel space-y-4 p-7"
             onSubmit={(e) => {
               e.preventDefault();
-              const form = e.currentTarget;
-              const data = new FormData(form);
-              window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-                String(data.get("subject") ?? "Project inquiry"),
-              )}&body=${encodeURIComponent(
-                `${String(data.get("message") ?? "")}\n\n— ${String(data.get("name") ?? "")}`,
-              )}`;
+              const data = new FormData(e.currentTarget);
+              const subject = encodeURIComponent(String(data.get("subject") ?? "Project inquiry"));
+              const body = encodeURIComponent(
+                `${String(data.get("message") ?? "")}\n\n— ${String(data.get("name") ?? "")}\n${String(
+                  data.get("email") ?? "",
+                )}`,
+              );
+              window.open(
+                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                  profile.email,
+                )}&su=${subject}&body=${body}`,
+                "_blank",
+                "noopener,noreferrer",
+              );
             }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
@@ -275,9 +382,9 @@ export function Contact() {
             />
             <button
               type="submit"
-              className="w-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-shadow hover:shadow-[var(--shadow-glow)]"
+              className="press-fx w-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-shadow hover:shadow-[var(--shadow-glow)]"
             >
-              Transmit message
+              Transmit message via Gmail
             </button>
           </form>
         </div>
