@@ -68,7 +68,7 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="panel relative overflow-hidden">
+          <div className="panel cyborg-portrait relative overflow-hidden">
             <img
               src={profileAsset.url}
               alt={`Portrait of ${profile.name}`}
@@ -76,7 +76,10 @@ export function Hero() {
               height={1242}
               className="w-full object-cover"
             />
+            <span aria-hidden="true" className="cyborg-mask" />
+            <span aria-hidden="true" className="cyborg-scan" />
           </div>
+
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
               <div key={s.label} className="px-3 py-4 text-center">
