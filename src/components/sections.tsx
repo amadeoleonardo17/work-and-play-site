@@ -76,9 +76,14 @@ export function Hero() {
               height={1242}
               className="w-full object-cover"
             />
-            <span aria-hidden="true" className="cyborg-mask" />
-            <span aria-hidden="true" className="cyborg-scan" />
+            <img
+              src={profileCyborg}
+              alt=""
+              aria-hidden="true"
+              className="cyborg-fuse"
+            />
           </div>
+
 
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
