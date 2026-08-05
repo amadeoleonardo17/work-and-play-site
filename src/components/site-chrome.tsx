@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import profileAsset from "@/assets/profile.png.asset.json";
+const profileAsset = { url: "https://i.imgur.com/kp7x19J.png" };
 import { profile } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/theme";
 
