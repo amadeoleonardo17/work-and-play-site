@@ -348,14 +348,15 @@ export function Contact() {
                 )}`,
               );
               window.open(
-                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(
                   profile.email,
-                )}&su=${subject}&body=${body}`,
+                )}&subject=${subject}&body=${body}`,
                 "_blank",
                 "noopener,noreferrer",
               );
             }}
           >
+
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 name="name"
