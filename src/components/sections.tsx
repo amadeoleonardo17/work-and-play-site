@@ -1,15 +1,15 @@
 import { MatrixRain } from "@/components/MatrixRain";
 import { Reveal } from "@/components/effects";
-import profileAsset from "@/assets/profile.png.asset.json";
-import workAiContent from "@/assets/work-ai-content.png.asset.json";
-import workAsanaCrm from "@/assets/work-asana-crm.png.asset.json";
-import workLeads from "@/assets/work-leads-enrichment.png.asset.json";
-import achCcnaCert from "@/assets/ach-ccna-cert.jpg.asset.json";
-import achCcnaScore from "@/assets/ach-ccna-score.jpg.asset.json";
-import achTp5 from "@/assets/ach-teleperformance-5yrs.jpg.asset.json";
-import achTm10 from "@/assets/ach-techm-10yrs.jpg.asset.json";
-import achOvation from "@/assets/ach-standing-ovation.png.asset.json";
-import achBravo from "@/assets/ach-bravo.png.asset.json";
+const profileAsset = { url: "https://i.imgur.com/kp7x19J.png" };
+const workAiContent = { url: "https://i.imgur.com/3yotSIJ.png" };
+const workAsanaCrm = { url: "https://i.imgur.com/QRFHo3D.png" };
+const workLeads = { url: "https://i.imgur.com/l3jyoOW.png" };
+const achCcnaCert = { url: "https://i.imgur.com/nUl5osr.jpeg" };
+const achCcnaScore = { url: "https://i.imgur.com/vQhvFEN.jpeg" };
+const achTp5 = { url: "https://i.imgur.com/m4QBhtM.jpeg" };
+const achTm10 = { url: "https://i.imgur.com/5wX0CFo.jpeg" };
+const achOvation = { url: "https://i.imgur.com/oounFHL.png" };
+const achBravo = { url: "https://i.imgur.com/meYh3Zh.png" };
 import { profile, services, experience } from "@/data/portfolio";
 
 function SectionHeading({ index, title }: { index: string; title: string }) {
