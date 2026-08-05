@@ -388,7 +388,7 @@ export function Contact() {
               type="submit"
               className="press-fx w-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-shadow hover:shadow-[var(--shadow-glow)]"
             >
-              Transmit message via Gmail
+              Transmit message via Outlook
             </button>
           </form>
         </div>
