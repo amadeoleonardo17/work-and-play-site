@@ -1,5 +1,6 @@
 import { MatrixRain } from "@/components/MatrixRain";
 import { Reveal } from "@/components/effects";
+import profileCyborg from "@/assets/profile-cyborg.png";
 const profileAsset = { url: "https://i.imgur.com/kp7x19J.png" };
 const workAiContent = { url: "https://i.imgur.com/3yotSIJ.png" };
 const workAsanaCrm = { url: "https://i.imgur.com/QRFHo3D.png" };
@@ -76,9 +77,14 @@ export function Hero() {
               height={1242}
               className="w-full object-cover"
             />
-            <span aria-hidden="true" className="cyborg-mask" />
-            <span aria-hidden="true" className="cyborg-scan" />
+            <img
+              src={profileCyborg}
+              alt=""
+              aria-hidden="true"
+              className="cyborg-fuse"
+            />
           </div>
+
 
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
@@ -177,7 +183,7 @@ export function Works() {
                   src={w.image}
                   alt={`${w.title} automation workflow`}
                   loading="lazy"
-                  className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="h-52 w-full object-cover object-top transition-transform duration-700 ease-out will-change-transform group-hover:scale-150"
                 />
               </div>
               <div className="p-6">
