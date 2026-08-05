@@ -243,3 +243,74 @@
     transform: scale(0.96);
   }
 }
+
+/* Robotic half-face reveal on portrait hover (overlay only — source image untouched) */
+.cyborg-portrait .cyborg-mask,
+.cyborg-portrait .cyborg-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.cyborg-portrait .cyborg-mask {
+  clip-path: polygon(0 0, 48% 0, 44% 100%, 0 100%);
+  mix-blend-mode: color-dodge;
+  background-image:
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--primary) 55%, transparent),
+      color-mix(in oklab, var(--primary-glow) 10%, transparent)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in oklab, var(--primary) 45%, transparent) 0px,
+      color-mix(in oklab, var(--primary) 45%, transparent) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--primary-glow) 35%, transparent) 0px,
+      color-mix(in oklab, var(--primary-glow) 35%, transparent) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+.cyborg-portrait .cyborg-scan {
+  clip-path: polygon(0 0, 48% 0, 44% 100%, 0 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in oklab, var(--primary-glow) 60%, transparent) 48%,
+    transparent 100%
+  );
+  height: 26%;
+  inset: auto 0 auto 0;
+}
+
+.cyborg-portrait:hover .cyborg-mask {
+  opacity: 1;
+}
+
+.cyborg-portrait:hover .cyborg-scan {
+  opacity: 0.75;
+  animation: cyborg-scan 2.4s linear infinite;
+}
+
+@keyframes cyborg-scan {
+  from {
+    transform: translateY(-30%);
+  }
+  to {
+    transform: translateY(400%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyborg-portrait:hover .cyborg-scan {
+    animation: none;
+  }
+}

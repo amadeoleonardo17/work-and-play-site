@@ -68,7 +68,7 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div className="panel relative overflow-hidden">
+          <div className="panel cyborg-portrait relative overflow-hidden">
             <img
               src={profileAsset.url}
               alt={`Portrait of ${profile.name}`}
@@ -76,7 +76,10 @@ export function Hero() {
               height={1242}
               className="w-full object-cover"
             />
+            <span aria-hidden="true" className="cyborg-mask" />
+            <span aria-hidden="true" className="cyborg-scan" />
           </div>
+
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
               <div key={s.label} className="px-3 py-4 text-center">
@@ -345,14 +348,15 @@ export function Contact() {
                 )}`,
               );
               window.open(
-                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(
                   profile.email,
-                )}&su=${subject}&body=${body}`,
+                )}&subject=${subject}&body=${body}`,
                 "_blank",
                 "noopener,noreferrer",
               );
             }}
           >
+
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 name="name"
@@ -384,7 +388,7 @@ export function Contact() {
               type="submit"
               className="press-fx w-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-shadow hover:shadow-[var(--shadow-glow)]"
             >
-              Transmit message via Gmail
+              Transmit message via Outlook
             </button>
           </form>
         </div>
