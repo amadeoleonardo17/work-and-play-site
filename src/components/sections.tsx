@@ -81,7 +81,7 @@ export function Hero() {
             <img
               src="https://i.imgur.com/GJDPoNN.png"
               alt="Cyborg portrait"
-              className="absolute inset-0 z-20 h-full w-full object-cover [clip-path:ellipse(0%_0%_at_51%_36%)] transition-all duration-500 group-hover:[clip-path:ellipse(22%_29%_at_51%_36%)]"
+              className="absolute inset-0 z-20 h-full w-full object-cover [clip-path:ellipse(0%_0%_at_51.5%_35%)] transition-all duration-500 group-hover:[clip-path:ellipse(20%_26%_at_51.5%_35%)]"
             />
           </div>
 
