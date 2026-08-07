@@ -256,8 +256,8 @@
   mask-image: linear-gradient(100deg, #000 30%, rgba(0, 0, 0, 0.45) 60%, transparent 85%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  -webkit-mask-position: right center;
-  mask-position: right center;
+  -webkit-mask-position: left center;
+  mask-position: left center;
   -webkit-mask-size: 0% 100%;
   mask-size: 0% 100%;
   opacity: 0;
