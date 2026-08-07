@@ -177,15 +177,29 @@ export function Works() {
       <div className="grid gap-6 md:grid-cols-3">
         {works.map((w, i) => (
           <Reveal key={w.title} delay={i * 90}>
-            <article className="panel group h-full overflow-hidden">
+            <article className="panel group relative h-full">
               <div className="relative overflow-hidden border-b border-border bg-surface">
                 <img
                   src={w.image}
                   alt={`${w.title} automation workflow`}
                   loading="lazy"
-                  className="h-52 w-full object-cover object-top transition-transform duration-700 ease-out will-change-transform group-hover:scale-150"
+                  className="h-52 w-full cursor-zoom-in object-cover object-top"
                 />
               </div>
+              <div className="pointer-events-none absolute bottom-full left-1/2 z-40 mb-3 w-[min(34rem,88vw)] -translate-x-1/2 scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+                <div className="panel overflow-hidden bg-card p-2 shadow-[var(--shadow-glow)]">
+                  <img
+                    src={w.image}
+                    alt={`${w.title} full workflow preview`}
+                    loading="lazy"
+                    className="max-h-[60vh] w-full object-contain"
+                  />
+                  <p className="mt-2 px-1 pb-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-primary">
+                    {w.title}
+                  </p>
+                </div>
+              </div>
+
               <div className="p-6">
                 <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
                   {w.title}
