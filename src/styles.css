@@ -248,10 +248,10 @@
 /* Cyborg face morph: irregular face-shaped region with a soft gradual wipe */
 .cyborg-morph {
   clip-path: polygon(
-    45% 19%, 41% 21%, 36% 27%, 33% 37%, 34% 45%, 36% 51%,
-    40% 55%, 43% 58%, 47% 63%, 55% 64%, 56% 69%, 47% 69%,
-    46% 60%, 42% 52%, 40% 45%, 41% 38%, 44% 33%, 46% 26%
+    30% 7%, 46% 6%, 57% 10%, 58% 30%, 56% 46%, 54% 58%,
+    58% 66%, 57% 74%, 36% 74%, 33% 60%, 30% 44%, 29% 24%
   );
+
   -webkit-mask-image: linear-gradient(100deg, #000 30%, rgba(0, 0, 0, 0.45) 60%, transparent 85%);
   mask-image: linear-gradient(100deg, #000 30%, rgba(0, 0, 0, 0.45) 60%, transparent 85%);
   -webkit-mask-repeat: no-repeat;
