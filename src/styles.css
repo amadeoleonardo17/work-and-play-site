@@ -247,13 +247,15 @@
 
 /* Cyborg face morph: irregular face-shaped region with a soft gradual wipe */
 .cyborg-morph {
+  /* Left region bounded by the human/machine seam traced down the face + neck */
   clip-path: polygon(
-    30% 7%, 46% 6%, 57% 10%, 58% 30%, 56% 46%, 54% 58%,
-    58% 66%, 57% 74%, 36% 74%, 33% 60%, 30% 44%, 29% 24%
+    0% 0%, 47% 5%, 46.5% 18%, 47% 26%, 45% 33%, 42% 40%,
+    41% 47%, 40% 52%, 42% 57%, 42% 62%, 45% 66%, 50% 70%,
+    54% 75%, 55% 85%, 56% 100%, 0% 100%
   );
 
-  -webkit-mask-image: linear-gradient(100deg, #000 30%, rgba(0, 0, 0, 0.45) 60%, transparent 85%);
-  mask-image: linear-gradient(100deg, #000 30%, rgba(0, 0, 0, 0.45) 60%, transparent 85%);
+  -webkit-mask-image: linear-gradient(90deg, #000 55%, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 55%, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left center;
@@ -263,13 +265,14 @@
   opacity: 0;
   filter: contrast(1.1) saturate(0.95);
   transition:
-    mask-size 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-    -webkit-mask-size 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    mask-size 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+    -webkit-mask-size 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
     opacity 0.35s ease;
 }
 
 .group:hover .cyborg-morph {
   opacity: 1;
-  -webkit-mask-size: 320% 100%;
-  mask-size: 320% 100%;
+  -webkit-mask-size: 200% 100%;
+  mask-size: 200% 100%;
 }
+
