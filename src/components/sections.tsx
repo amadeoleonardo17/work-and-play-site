@@ -81,9 +81,10 @@ export function Hero() {
             <img
               src="https://i.imgur.com/GJDPoNN.png"
               alt="Cyborg portrait"
-              className="absolute inset-0 z-20 h-full w-full object-cover [clip-path:ellipse(0%_0%_at_51.5%_35%)] transition-all duration-500 group-hover:[clip-path:ellipse(20%_26%_at_51.5%_35%)]"
+              className="cyborg-morph absolute inset-0 z-20 h-full w-full object-cover"
             />
           </div>
+
 
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
             {profile.stats.map((s) => (
