@@ -183,22 +183,23 @@ export function Works() {
                   src={w.image}
                   alt={`${w.title} automation workflow`}
                   loading="lazy"
-                  className="h-52 w-full cursor-zoom-in object-cover object-top"
+                  className="h-52 w-full cursor-zoom-in object-cover object-top transition-transform duration-500 group-hover:scale-125"
                 />
               </div>
-              <div className="pointer-events-none absolute bottom-full left-1/2 z-40 mb-3 w-[min(34rem,88vw)] -translate-x-1/2 scale-95 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+              <div className="pointer-events-none absolute bottom-full left-1/2 z-40 mb-3 w-[min(34rem,88vw)] -translate-x-1/2 scale-90 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100">
                 <div className="panel overflow-hidden bg-card p-2 shadow-[var(--shadow-glow)]">
                   <img
                     src={w.image}
                     alt={`${w.title} full workflow preview`}
                     loading="lazy"
-                    className="max-h-[60vh] w-full object-contain"
+                    className="max-h-[60vh] w-full scale-100 object-contain transition-transform duration-700 group-hover:scale-110"
                   />
                   <p className="mt-2 px-1 pb-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-primary">
                     {w.title}
                   </p>
                 </div>
               </div>
+
 
               <div className="p-6">
                 <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
