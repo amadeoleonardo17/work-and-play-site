@@ -452,3 +452,189 @@
 }
 
 
+
+/* ============ Previous Works — premium HUD card hover ============ */
+.work-card {
+  transition:
+    transform 380ms ease-out,
+    opacity 380ms ease-out,
+    filter 380ms ease-out,
+    box-shadow 380ms ease-out,
+    border-color 380ms ease-out;
+  outline: none;
+}
+
+.work-media {
+  isolation: isolate;
+}
+
+.work-img {
+  display: block;
+  transition:
+    transform 420ms ease-out,
+    filter 420ms ease-out;
+  will-change: transform;
+}
+
+/* focus/hover activation */
+.work-card:hover,
+.work-card:focus-visible,
+.work-card:focus-within {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 28%, transparent),
+    0 0 32px -10px color-mix(in oklab, var(--primary) 55%, transparent),
+    var(--shadow-panel);
+}
+
+.work-card:hover .work-img,
+.work-card:focus-visible .work-img,
+.work-card:focus-within .work-img {
+  transform: scale(1.04);
+  filter: brightness(1.1) contrast(1.08);
+}
+
+/* dim siblings while one card is active */
+.work-grid:hover .work-card:not(:hover):not(:focus-within),
+.work-grid:focus-within .work-card:not(:hover):not(:focus-within) {
+  opacity: 0.62;
+  filter: brightness(0.82) saturate(0.9);
+}
+
+/* scanning line */
+.work-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--primary) 90%, transparent),
+    transparent
+  );
+  box-shadow: 0 0 14px color-mix(in oklab, var(--primary) 70%, transparent);
+}
+
+.work-card:hover .work-scan,
+.work-card:focus-visible .work-scan,
+.work-card:focus-within .work-scan {
+  animation: work-scan 900ms ease-out 1 both;
+}
+
+@keyframes work-scan {
+  0% { top: 0%; opacity: 0; }
+  12% { opacity: 0.9; }
+  85% { opacity: 0.75; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* corner targeting brackets */
+.work-corner {
+  position: absolute;
+  z-index: 4;
+  height: 14px;
+  width: 14px;
+  border: 1px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease-out, transform 380ms ease-out;
+}
+
+.work-corner-tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; transform: translate(-4px, -4px); }
+.work-corner-tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; transform: translate(4px, -4px); }
+.work-corner-bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; transform: translate(-4px, 4px); }
+.work-corner-br { bottom: 8px; right: 8px; border-left: 0; border-top: 0; transform: translate(4px, 4px); }
+
+.work-card:hover .work-corner,
+.work-card:focus-visible .work-corner,
+.work-card:focus-within .work-corner {
+  opacity: 0.85;
+  transform: translate(0, 0);
+}
+
+/* bottom gradient + view project indicator */
+.work-cta {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 45%;
+  padding: 0.6rem 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--background) 88%, transparent),
+    transparent
+  );
+  transition: opacity 340ms ease-out;
+}
+
+.work-cta-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  transform: translateY(6px);
+  transition: transform 380ms ease-out;
+}
+
+.work-card:hover .work-cta,
+.work-card:focus-visible .work-cta,
+.work-card:focus-within .work-cta {
+  opacity: 1;
+}
+
+.work-card:hover .work-cta-text,
+.work-card:focus-visible .work-cta-text,
+.work-card:focus-within .work-cta-text {
+  transform: translateY(0);
+}
+
+/* touch devices: no persistent hover, tap/focus provides emphasis */
+@media (hover: none) {
+  .work-grid:hover .work-card:not(:focus-within) {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card,
+  .work-img,
+  .work-corner,
+  .work-cta,
+  .work-cta-text {
+    transition: none;
+  }
+  .work-card:hover,
+  .work-card:focus-within {
+    transform: none;
+  }
+  .work-card:hover .work-img,
+  .work-card:focus-within .work-img {
+    transform: none;
+  }
+  .work-scan,
+  .work-card:hover .work-scan,
+  .work-card:focus-within .work-scan {
+    animation: none;
+    opacity: 0;
+  }
+  .work-corner,
+  .work-corner-tl,
+  .work-corner-tr,
+  .work-corner-bl,
+  .work-corner-br {
+    transform: none;
+  }
+}
