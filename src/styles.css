@@ -305,11 +305,6 @@
   pointer-events: none;
 }
 
-.hud-ghost-r {
-  filter: url("#none");
-  background: transparent;
-}
-
 .group:hover .hud-ghost-r {
   animation: hud-glitch-r 0.42s steps(2, end) 1 both;
 }
