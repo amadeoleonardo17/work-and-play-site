@@ -1,7 +1,7 @@
 import { MatrixRain } from "@/components/MatrixRain";
 import { Reveal } from "@/components/effects";
-import profileCyborg from "@/assets/profile-cyborg.png";
-const profileAsset = { url: "https://i.imgur.com/kp7x19J.png" };
+import { HudPortrait } from "@/components/hud-portrait";
+
 const workAiContent = { url: "https://i.imgur.com/3yotSIJ.png" };
 const workAsanaCrm = { url: "https://i.imgur.com/QRFHo3D.png" };
 const workLeads = { url: "https://i.imgur.com/l3jyoOW.png" };
