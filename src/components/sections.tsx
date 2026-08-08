@@ -69,21 +69,9 @@ export function Hero() {
         </div>
 
         <div className="relative">
-          <div
-            className="group relative mx-auto aspect-square w-full cursor-pointer overflow-hidden rounded-2xl"
-            style={{ maxWidth: '420px' }}
-          >
-            <img
-              src={profileAsset.url}
-              alt={`Portrait of ${profile.name}`}
-              className="absolute inset-0 z-10 h-full w-full object-cover"
-            />
-            <img
-              src="https://i.imgur.com/GJDPoNN.png"
-              alt="Cyborg portrait"
-              className="cyborg-morph absolute inset-0 z-20 h-full w-full object-cover"
-            />
-          </div>
+          <HudPortrait />
+
+
 
 
           <dl className="mt-4 grid grid-cols-3 divide-x divide-border border border-border bg-card/70">
