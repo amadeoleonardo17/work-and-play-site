@@ -245,34 +245,210 @@
 }
 
 
-/* Cyborg face morph: irregular face-shaped region with a soft gradual wipe */
-.cyborg-morph {
-  /* Left region bounded by the human/machine seam traced down the face + neck */
-  clip-path: polygon(
-    0% 0%, 47% 5%, 46.5% 18%, 47% 26%, 45% 33%, 42% 40%,
-    41% 47%, 40% 52%, 42% 57%, 42% 62%, 45% 66%, 50% 70%,
-    54% 75%, 55% 85%, 56% 100%, 0% 100%
-  );
+/* ============ Cyberpunk HUD portrait transformation ============ */
+.hud-portrait {
+  --hud: var(--primary-glow);
+  margin-inline: auto;
+  width: 100%;
+  max-width: 420px;
+}
 
-  -webkit-mask-image: linear-gradient(90deg, #000 55%, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
-  mask-image: linear-gradient(90deg, #000 55%, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: left center;
-  mask-position: left center;
-  -webkit-mask-size: 0% 100%;
-  mask-size: 0% 100%;
+.hud-frame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: crosshair;
+  isolation: isolate;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.group:hover .hud-frame {
+  border-color: color-mix(in oklab, var(--hud) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--hud) 25%, transparent),
+    0 0 40px -12px color-mix(in oklab, var(--hud) 55%, transparent);
+}
+
+.hud-img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hud-human {
+  z-index: 1;
+}
+
+.hud-robot {
+  z-index: 2;
   opacity: 0;
-  filter: contrast(1.1) saturate(0.95);
-  transition:
-    mask-size 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
-    -webkit-mask-size 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 0.35s ease;
+  transition: opacity 0.85s ease 0.28s;
 }
 
-.group:hover .cyborg-morph {
+.group:hover .hud-robot {
   opacity: 1;
-  -webkit-mask-size: 200% 100%;
-  mask-size: 200% 100%;
 }
+
+/* RGB split ghosts — only during the brief glitch window */
+.hud-ghost {
+  z-index: 3;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.group:hover .hud-ghost-r {
+  animation: hud-glitch-r 0.42s steps(2, end) 1 both;
+}
+
+.group:hover .hud-ghost-c {
+  animation: hud-glitch-c 0.42s steps(2, end) 1 both;
+}
+
+@keyframes hud-glitch-r {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  15% { opacity: 0.55; transform: translate3d(-2.2%, 0.6%, 0); }
+  40% { opacity: 0.45; transform: translate3d(2%, -0.8%, 0); }
+  70% { opacity: 0.35; transform: translate3d(-1%, 0.3%, 0); }
+  100% { opacity: 0; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes hud-glitch-c {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  20% { opacity: 0.5; transform: translate3d(2.4%, -0.7%, 0); }
+  45% { opacity: 0.4; transform: translate3d(-1.8%, 0.9%, 0); }
+  75% { opacity: 0.3; transform: translate3d(1%, -0.3%, 0); }
+  100% { opacity: 0; transform: translate3d(0, 0, 0); }
+}
+
+/* the two ghosts are tinted with blend layers via filters */
+.hud-ghost-r { filter: sepia(1) saturate(6) hue-rotate(-40deg); }
+.hud-ghost-c { filter: sepia(1) saturate(6) hue-rotate(150deg); }
+
+/* ---- overlay ---- */
+.hud-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease 0.12s;
+  font-family: var(--font-mono);
+  color: color-mix(in oklab, var(--hud) 85%, white);
+}
+
+.group:hover .hud-overlay {
+  opacity: 1;
+}
+
+.hud-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--hud) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--hud) 10%, transparent) 1px, transparent 1px);
+  background-size: 12.5% 12.5%;
+  mask-image: radial-gradient(circle at 50% 45%, transparent 32%, #000 78%);
+}
+
+.hud-bracket {
+  position: absolute;
+  height: 16%;
+  width: 16%;
+  border: 1px solid currentColor;
+  opacity: 0.85;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hud-bracket-tl { top: 5%; left: 5%; border-right: 0; border-bottom: 0; transform: translate(-8px, -8px); }
+.hud-bracket-tr { top: 5%; right: 5%; border-left: 0; border-bottom: 0; transform: translate(8px, -8px); }
+.hud-bracket-bl { bottom: 5%; left: 5%; border-right: 0; border-top: 0; transform: translate(-8px, 8px); }
+.hud-bracket-br { bottom: 5%; right: 5%; border-left: 0; border-top: 0; transform: translate(8px, 8px); }
+
+.group:hover .hud-bracket { transform: translate(0, 0); }
+
+.hud-reticle {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  height: 46%;
+  width: 46%;
+  transform: translate(-50%, -50%);
+}
+
+.hud-reticle-ring,
+.hud-reticle-arc {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+}
+
+.hud-reticle-ring {
+  border: 1px solid color-mix(in oklab, currentColor 35%, transparent);
+}
+
+.hud-reticle-arc {
+  border: 1px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: color-mix(in oklab, currentColor 45%, transparent);
+  animation: hud-spin 7s linear infinite;
+}
+
+@keyframes hud-spin {
+  to { transform: rotate(360deg); }
+}
+
+.hud-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, currentColor 85%, transparent),
+    transparent
+  );
+  box-shadow: 0 0 14px color-mix(in oklab, var(--hud) 70%, transparent);
+  animation: hud-scan 2.6s ease-in-out infinite;
+}
+
+@keyframes hud-scan {
+  0% { top: 4%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 96%; opacity: 0; }
+}
+
+.hud-label {
+  position: absolute;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.15rem 0.35rem;
+  background: color-mix(in oklab, var(--background) 55%, transparent);
+  border-left: 1px solid currentColor;
+}
+
+.hud-label-tl { top: 6.5%; left: 23%; }
+.hud-label-tr { top: 6.5%; right: 23%; }
+.hud-label-bl { bottom: 6.5%; left: 23%; }
+.hud-label-br { bottom: 6.5%; right: 23%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .hud-ghost-r,
+  .group:hover .hud-ghost-c { animation: none; }
+  .hud-reticle-arc,
+  .hud-scanline { animation: none; }
+}
+
 
