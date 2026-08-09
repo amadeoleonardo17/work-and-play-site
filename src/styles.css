@@ -643,7 +643,7 @@
   border: 1px solid color-mix(in oklab, var(--primary) 70%, transparent);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 320ms ease-out, transform 380ms ease-out;
+  transition: opacity 320ms ease-out 240ms, transform 380ms ease-out 240ms;
 }
 
 .work-corner-tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; transform: translate(-4px, -4px); }
