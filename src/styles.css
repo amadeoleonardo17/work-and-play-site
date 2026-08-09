@@ -737,4 +737,19 @@
   .work-corner-br {
     transform: none;
   }
+  .work-card:hover .work-noise,
+  .work-card:focus-within .work-noise {
+    animation: none;
+    opacity: 0;
+  }
+  .work-glow,
+  .work-hud-label {
+    transition: none;
+  }
+  .work-hud-label,
+  .work-card:hover .work-hud-label {
+    transform: none;
+  }
+}
+
 }
