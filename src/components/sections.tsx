@@ -173,14 +173,22 @@ export function Works() {
                   loading="lazy"
                   className="work-img h-52 w-full object-cover object-top"
                 />
+                <span aria-hidden className="work-glow" />
+                <span aria-hidden className="work-noise" />
                 <span aria-hidden className="work-scan" />
                 <span aria-hidden className="work-corner work-corner-tl" />
                 <span aria-hidden className="work-corner work-corner-tr" />
                 <span aria-hidden className="work-corner work-corner-bl" />
                 <span aria-hidden className="work-corner work-corner-br" />
+                <span aria-hidden className="work-hud-label work-hud-label-l">WORKFLOW // SCAN</span>
+                <span aria-hidden className="work-hud-label work-hud-label-r">
+                  <i className="work-hud-dot" />
+                  ONLINE
+                </span>
                 <span aria-hidden className="work-cta">
                   <span className="work-cta-text">View Project →</span>
                 </span>
+
               </div>
 
               <div className="p-6">
