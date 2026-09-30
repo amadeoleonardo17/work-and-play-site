@@ -10,7 +10,7 @@ type PortfolioFolderProps = {
   category: string;
   description: string;
   images: FolderImage[];
-  align?: "right";
+  align?: "right" | undefined;
   videoUrl?: string;
 };
 
@@ -71,14 +71,14 @@ export function PortfolioFolder({ title, category, description, images, align, v
         <DialogContent className="w-[min(96vw,1100px)] max-w-none gap-0 border-border bg-background p-0 shadow-[var(--shadow-panel)]">
           <div className="border-b border-border px-5 py-4 pr-12">
             <DialogTitle className="text-base text-foreground">{title}</DialogTitle>
-            <DialogDescription className="mt-1 font-mono text-xs">{active + 1} / {images.length} · {selected.title}</DialogDescription>
+            <DialogDescription className="mt-1 font-mono text-xs">{active + 1} / {images.length} · {selected?.title}</DialogDescription>
           </div>
           <div className="flex min-h-0 items-center justify-center bg-surface/50 p-3 sm:p-6">
-            <img src={selected.image} alt={selected.title} className="max-h-[62vh] w-full object-contain" />
+            {selected && <img src={selected.image} alt={selected.title} className="max-h-[62vh] w-full object-contain" />}
           </div>
           <div className="flex items-center justify-between gap-3 border-t border-border p-3 sm:px-5">
             <Button type="button" variant="outline" size="icon" aria-label="Previous image" onClick={() => setActive((active - 1 + images.length) % images.length)}><ChevronLeft /></Button>
-            <p className="min-w-0 truncate text-center text-xs text-muted-foreground">{selected.meta ?? selected.title}</p>
+            <p className="min-w-0 truncate text-center text-xs text-muted-foreground">{selected?.meta ?? selected?.title}</p>
             <Button type="button" variant="outline" size="icon" aria-label="Next image" onClick={() => setActive((active + 1) % images.length)}><ChevronRight /></Button>
           </div>
           <div className="flex gap-2 overflow-x-auto border-t border-border p-3" aria-label="Choose image">
