@@ -1,6 +1,15 @@
 import { MatrixRain } from "@/components/MatrixRain";
 import { Reveal } from "@/components/effects";
 import { HudPortrait } from "@/components/hud-portrait";
+import { PortfolioFolder, type FolderImage } from "@/components/portfolio-folder";
+import ghlForm from "@/assets/work-hGfI7CR.png.asset.json";
+import ghlContacts from "@/assets/work-ytidPd6.png.asset.json";
+import ghlPipeline from "@/assets/work-7UZJb0V.png.asset.json";
+import ghlWorkflows from "@/assets/work-9yuLxYD.png.asset.json";
+import ghlLeadIntake from "@/assets/work-nmJ8hvd.png.asset.json";
+import ghlEngagement from "@/assets/work-F9ODUNL.png.asset.json";
+import ghlWebsite from "@/assets/work-BMBT00R.png.asset.json";
+import n8nWorkflow from "@/assets/work-Nquz3mm.png.asset.json";
 
 const workAiContent = { url: "https://i.imgur.com/3yotSIJ.png" };
 const workAsanaCrm = { url: "https://i.imgur.com/QRFHo3D.png" };
@@ -137,24 +146,37 @@ export function Experience() {
   );
 }
 
-const works = [
+const workFolders: { title: string; category: string; description: string; images: FolderImage[]; videoUrl?: string }[] = [
   {
-    image: workLeads.url,
-    title: "Automated Leads Enrichment",
-    stack: "Zapier · Apollo · Google Sheets · Slack · Gmail",
-    body: "Captures form leads, enriches company data via Apollo webhooks, splits high and low priority paths, logs to Sheets, notifies Sales on Slack, and drafts AI outreach emails.",
+    title: "Zapier Automations",
+    category: "Zapier / 03 projects",
+    description: "Lead enrichment, Asana CRM engagement, and AI content repurposing workflows.",
+    images: [
+      { image: workLeads.url, title: "Automated Leads Enrichment", meta: "Zapier · Apollo · Google Sheets · Slack · Gmail" },
+      { image: workAsanaCrm.url, title: "Asana CRM Lead Engagement Workflow", meta: "Zapier · Asana · Gmail · Google Drive" },
+      { image: workAiContent.url, title: "AI Content Repurposing", meta: "Zapier · AI by Zapier · Google Drive" },
+    ],
   },
   {
-    image: workAsanaCrm.url,
-    title: "Asana CRM Lead Engagement Workflow",
-    stack: "Zapier · Asana · Gmail · Google Drive",
-    body: "Five-stage pipeline automation (Ready to Start, No Response, Quoted, Approved, Paid & Closed) with lead folders, delayed follow-ups, and stage-specific email sequences.",
+    title: "n8n Workflow",
+    category: "n8n / 01 project",
+    description: "A lead-processing automation built as a connected n8n workflow.",
+    images: [{ image: n8nWorkflow.url, title: "Lead Processing Workflow", meta: "n8n portfolio project" }],
   },
   {
-    image: workAiContent.url,
-    title: "AI Content Repurposing",
-    stack: "Zapier · AI by Zapier · Google Drive · Looping",
-    body: "Watches a Drive folder, transcribes new files with AI, generates a blog post, then loops and splits into paths to repurpose content across channels.",
+    title: "RenderVision Studio",
+    category: "GoHighLevel / Simulated business",
+    description: "A simulated architectural visualization business system: website, inquiry form, CRM, pipeline, and automated lead follow-up.",
+    images: [
+      { image: ghlWebsite.url, title: "RenderVision Studio Website" },
+      { image: ghlForm.url, title: "Project Inquiry Form" },
+      { image: ghlContacts.url, title: "CRM Contacts" },
+      { image: ghlPipeline.url, title: "CRM Pipeline" },
+      { image: ghlWorkflows.url, title: "Workflow Overview" },
+      { image: ghlLeadIntake.url, title: "Lead Intake & Qualification" },
+      { image: ghlEngagement.url, title: "Qualified Lead Engagement" },
+    ],
+    videoUrl: "https://www.loom.com/embed/9df270e9976741c990c781d40cc46b75",
   },
 ];
 
@@ -163,42 +185,9 @@ export function Works() {
     <section id="works" className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading index="03" title="Previous Works" />
       <div className="work-grid grid gap-6 md:grid-cols-3">
-        {works.map((w, i) => (
-          <Reveal key={w.title} delay={i * 90}>
-            <article className="panel group work-card relative h-full" tabIndex={0}>
-              <div className="work-media relative overflow-hidden border-b border-border bg-surface">
-                <img
-                  src={w.image}
-                  alt={`${w.title} automation workflow`}
-                  loading="lazy"
-                  className="work-img h-52 w-full object-cover object-top"
-                />
-                <span aria-hidden className="work-glow" />
-                <span aria-hidden className="work-noise" />
-                <span aria-hidden className="work-scan" />
-                <span aria-hidden className="work-corner work-corner-tl" />
-                <span aria-hidden className="work-corner work-corner-tr" />
-                <span aria-hidden className="work-corner work-corner-bl" />
-                <span aria-hidden className="work-corner work-corner-br" />
-                <span aria-hidden className="work-hud-label work-hud-label-l">WORKFLOW // SCAN</span>
-                <span aria-hidden className="work-hud-label work-hud-label-r">
-                  <i className="work-hud-dot" />
-                  ONLINE
-                </span>
-                <span aria-hidden className="work-cta">
-                  <span className="work-cta-text">View Project →</span>
-                </span>
-
-              </div>
-
-              <div className="p-6">
-                <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
-                  {w.title}
-                </h3>
-                <p className="mt-1 font-mono text-[0.68rem] tracking-[0.1em] text-primary">{w.stack}</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
-              </div>
-            </article>
+        {workFolders.map((folder, i) => (
+          <Reveal key={folder.title} delay={i * 90}>
+            <PortfolioFolder {...folder} align={i === 2 ? "right" : undefined} />
           </Reveal>
         ))}
       </div>
@@ -244,29 +233,15 @@ export function Achievements() {
     <section id="achievements" className="border-y border-border bg-surface/40">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <SectionHeading index="04" title="Achievements" />
-        <div className="grid gap-6 md:grid-cols-3">
-          {achievements.map((a, i) => (
-            <Reveal key={a.title} delay={i * 80}>
-              <figure className="panel group h-full overflow-hidden">
-                <div className="overflow-hidden border-b border-border bg-background">
-                  <img
-                    src={a.image}
-                    alt={a.title}
-                    loading="lazy"
-                    className="h-48 w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <figcaption className="p-6">
-                  <h3 className="text-sm font-semibold leading-snug text-foreground group-hover:text-primary">
-                    {a.title}
-                  </h3>
-                  <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                    {a.meta}
-                  </p>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+        <div className="max-w-sm">
+          <Reveal>
+            <PortfolioFolder
+              title="Certificates & Recognition"
+              category="Achievements / 06 records"
+              description="Cisco certification and exam results, plus service and performance awards from Tech Mahindra and Teleperformance."
+              images={achievements}
+            />
+          </Reveal>
         </div>
       </div>
     </section>
