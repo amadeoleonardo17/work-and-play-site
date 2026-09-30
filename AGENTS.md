@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Portfolio media groups use `PortfolioFolder` with CDN image pointers and a shared image viewer; this keeps project and award galleries compact while preserving full-size inspection.

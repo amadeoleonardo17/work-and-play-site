@@ -1,0 +1,4 @@
+- [x] Group Zapier, n8n, and RenderVision Studio work into animated folders with image browsing.
+- [x] Add the RenderVision Studio Loom walkthrough.
+- [x] Compact achievements into a single image folder.
+- [ ] Verify desktop/mobile rendering, folder interactions, and preview errors.
