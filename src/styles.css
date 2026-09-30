@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Matrix design system — phosphor green on terminal black.
+ * Matrix-inspired design system — electric blue on deep navy.
  * All colors are oklch semantic tokens. Never hardcode colors in components.
  */
 
@@ -750,5 +750,149 @@
   .work-card:hover .work-hud-label {
     transform: none;
   }
+}
+
+/* Portfolio folders: the cover opens in place and a contact sheet unfolds above it. */
+.portfolio-folder {
+  isolation: isolate;
+  transition: transform 400ms ease-out, border-color 400ms ease-out, box-shadow 400ms ease-out;
+}
+.portfolio-folder:hover,
+.portfolio-folder:focus-within {
+  z-index: 20;
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--primary) 50%, var(--border));
+  box-shadow: var(--shadow-glow), var(--shadow-panel);
+}
+.folder-cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 208px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(145deg, var(--surface), var(--background));
+  perspective: 700px;
+}
+.folder-back, .folder-front, .folder-preview { position: absolute; width: min(62%, 220px); height: 126px; }
+.folder-back {
+  top: 47px;
+  border: 1px solid var(--primary);
+  background: color-mix(in oklab, var(--primary) 15%, var(--card));
+  transform: rotate(-2deg);
+}
+.folder-back::before {
+  content: "";
+  position: absolute;
+  bottom: 100%; left: -1px;
+  width: 40%; height: 14px;
+  border: 1px solid var(--primary);
+  border-bottom: none;
+  background: color-mix(in oklab, var(--primary) 15%, var(--card));
+}
+.folder-preview { top: 34px; transform-style: preserve-3d; }
+.folder-paper {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  object-fit: cover;
+  object-position: top;
+  box-shadow: var(--shadow-panel);
+  transition: transform 550ms cubic-bezier(.2,.8,.2,1);
+}
+.folder-paper-0 { transform: translateY(8px) rotate(-3deg); }
+.folder-paper-1 { transform: translateY(5px) rotate(2deg); }
+.folder-paper-2 { transform: translateY(2px); }
+.portfolio-folder:hover .folder-paper-0, .portfolio-folder:focus-within .folder-paper-0 { transform: translate(-25%, -26px) rotate(-10deg); }
+.portfolio-folder:hover .folder-paper-1, .portfolio-folder:focus-within .folder-paper-1 { transform: translate(25%, -38px) rotate(9deg); }
+.portfolio-folder:hover .folder-paper-2, .portfolio-folder:focus-within .folder-paper-2 { transform: translateY(-46px); }
+.folder-front {
+  top: 75px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid var(--primary);
+  color: var(--primary-foreground);
+  background: color-mix(in oklab, var(--primary) 78%, var(--surface));
+  transform-origin: bottom center;
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+  box-shadow: var(--shadow-panel);
+}
+.portfolio-folder:hover .folder-front, .portfolio-folder:focus-within .folder-front { transform: rotateX(-25deg) translateY(7px); }
+.folder-popup {
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  bottom: calc(100% + 10px);
+  width: min(620px, calc(100vw - 32px));
+  padding: 15px;
+  border: 1px solid var(--primary);
+  background: var(--card);
+  box-shadow: var(--shadow-panel), var(--shadow-glow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) rotateX(-6deg);
+  transform-origin: bottom;
+  transition: opacity 320ms ease-out, transform 420ms ease-out, visibility 320ms;
+}
+.folder-popup-right { left: auto; right: 0; }
+.portfolio-folder:hover .folder-popup,
+.portfolio-folder:focus-within .folder-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotateX(0);
+}
+.folder-popup-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.folder-popup-heading span { margin-left: auto; color: var(--muted-foreground); }
+.folder-popup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  max-height: min(50vh, 380px);
+  overflow-y: auto;
+}
+.folder-popup-item {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(12px) scale(.97);
+}
+.portfolio-folder:hover .folder-popup-item,
+.portfolio-folder:focus-within .folder-popup-item { animation: folder-unfold 430ms ease-out both; }
+.folder-popup-item:nth-child(2) { animation-delay: 90ms !important; }
+.folder-popup-item:nth-child(3) { animation-delay: 180ms !important; }
+.folder-popup-item:nth-child(4) { animation-delay: 270ms !important; }
+.folder-popup-item:nth-child(5) { animation-delay: 360ms !important; }
+.folder-popup-item:nth-child(6) { animation-delay: 450ms !important; }
+.folder-popup-item:nth-child(7) { animation-delay: 540ms !important; }
+.folder-popup-item img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+.folder-popup-item figcaption { overflow: hidden; padding: 6px; color: var(--muted-foreground); font-family: var(--font-mono); font-size: .58rem; white-space: nowrap; text-overflow: ellipsis; }
+@keyframes folder-unfold { to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (hover: none) {
+  .folder-popup { display: none; }
+  .portfolio-folder:hover { transform: none; }
+}
+@media (max-width: 767px) { .folder-popup { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-folder, .folder-front, .folder-paper, .folder-popup { transition: none; }
+  .portfolio-folder:hover, .portfolio-folder:focus-within { transform: none; }
+  .portfolio-folder:hover .folder-paper, .portfolio-folder:focus-within .folder-paper,
+  .portfolio-folder:hover .folder-front, .portfolio-folder:focus-within .folder-front,
+  .portfolio-folder:hover .folder-popup, .portfolio-folder:focus-within .folder-popup { transform: none; }
+  .portfolio-folder:hover .folder-popup-item, .portfolio-folder:focus-within .folder-popup-item { animation: none; opacity: 1; transform: none; }
 }
 
