@@ -58,8 +58,8 @@ export function PortfolioFolder({ title, category, description, images, align, v
       <div className={`folder-popup ${align === "right" ? "folder-popup-right" : ""}`} aria-hidden="true">
         <div className="folder-popup-heading"><FolderOpen className="h-4 w-4" /> {title} <span>{images.length} images</span></div>
         <div className="folder-popup-grid">
-          {images.map((item, index) => (
-            <figure key={item.image} className="folder-popup-item" style={{ animationDelay: `${index * 90}ms` }}>
+          {images.map((item) => (
+            <figure key={item.image} className="folder-popup-item">
               <img src={item.image} alt="" loading="lazy" />
               <figcaption>{item.title}</figcaption>
             </figure>
