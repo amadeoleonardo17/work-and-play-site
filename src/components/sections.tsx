@@ -10,10 +10,10 @@ import ghlLeadIntake from "@/assets/work-nmJ8hvd.png.asset.json";
 import ghlEngagement from "@/assets/work-F9ODUNL.png.asset.json";
 import ghlWebsite from "@/assets/work-BMBT00R.png.asset.json";
 import n8nWorkflow from "@/assets/work-Nquz3mm.png.asset.json";
+import workAiContent from "@/assets/work-ai-content.png.asset.json";
+import workAsanaCrm from "@/assets/work-asana-crm.png.asset.json";
+import workLeads from "@/assets/work-leads-enrichment.png.asset.json";
 
-const workAiContent = { url: "https://i.imgur.com/3yotSIJ.png" };
-const workAsanaCrm = { url: "https://i.imgur.com/QRFHo3D.png" };
-const workLeads = { url: "https://i.imgur.com/l3jyoOW.png" };
 const achCcnaCert = { url: "https://i.imgur.com/nUl5osr.jpeg" };
 const achCcnaScore = { url: "https://i.imgur.com/vQhvFEN.jpeg" };
 const achTp5 = { url: "https://i.imgur.com/m4QBhtM.jpeg" };
